@@ -12,7 +12,7 @@ const initialState: PokemonModel = {
 function updatePokemonList(state: PokemonModel, props: PokemonModel) {
   return {
     selectedPokemon: state.selectedPokemon,
-    pokemonList: [...state.pokemonList, ...props.pokemonList],
+    pokemonList: props.pokemonList,
     searchName: state.searchName
   };
 }

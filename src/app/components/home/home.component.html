@@ -1,4 +1,4 @@
-<app-header (search)="pokeList = $event"></app-header>
+<app-header (search)="onSearchPokemon($event)"></app-header>
 <cdk-virtual-scroll-viewport *ngIf="pokeList.length !== 0"
                              minBufferPx="200" maxBufferPx="400"
                              itemSize="50" class="mt-2 viewport">

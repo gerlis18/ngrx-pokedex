@@ -1,9 +1,8 @@
-import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnInit, Output } from '@angular/core';
 import { AuthGuard } from '../../auth.guard';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../reducers';
 import { selectPokemon } from '../../../reducers/pokemon.reducer';
-import { updateSearchParam } from '../../../actions/pokemon.actions';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,19 +10,16 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnChanges, OnInit, OnDestroy {
+export class HeaderComponent implements OnChanges, OnInit {
 
-  searchName: string;
+  searchName = '';
   btnName: string;
   @Output() search = new EventEmitter();
 
   constructor(
     private guard: AuthGuard,
     private store: Store<AppState>,
-    private router: Router) {
-    store.select('pokemonList')
-      .subscribe(state => this.searchName = state.searchName);
-  }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.onChangeRoute();
@@ -34,7 +30,7 @@ export class HeaderComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   onChangeRoute() {
-    if (location.pathname === '/home') {
+    if (location.hash.includes('home')) {
       this.btnName = 'Cerrar sesión';
       return true;
     } else {
@@ -55,12 +51,6 @@ export class HeaderComponent implements OnChanges, OnInit, OnDestroy {
   findPokemon() {
     this.store.pipe(select(selectPokemon, { name: this.searchName }))
       .subscribe(pokes => this.search.emit(pokes));
-  }
-
-  ngOnDestroy(): void {
-    this.store.dispatch(updateSearchParam(
-      { searchName: this.searchName }
-    ));
   }
 
 }

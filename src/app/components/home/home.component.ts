@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.pokeService.getPokemons()
       .subscribe((res: any) => {
+        this.pokeList = [];
         res.map((info: PokemonList) => {
           this.pokeList.push({
             name: info.name,
@@ -31,5 +32,11 @@ export class HomeComponent implements OnInit {
           pokemonList: this.pokeList
         }));
       });
+  }
+
+  onSearchPokemon(e) {
+    this.pokeList = [];
+    console.log(e)
+    this.pokeList = e;
   }
 }
