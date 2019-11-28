@@ -11,7 +11,8 @@ const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'pokemon/:id', component: PokemonDetailComponent, canActivate: [AuthGuard] }
+  { path: 'pokemon/:id', component: PokemonDetailComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
