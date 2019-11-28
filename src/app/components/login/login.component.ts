@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../reducers';
 import { UserModel } from '../../models/user.model';
-import { loginUser } from '../../reducers/login.reducer';
+import { selectUsers } from '../../reducers/login.reducer';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,28 +12,34 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user: UserModel = {
+  userModel: UserModel = {
     password: '',
     email: ''
   };
   showErrorMessage: boolean;
+  users: UserModel[];
 
-  constructor(private store: Store<AppState>, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {
+    this.store.pipe(select(selectUsers))
+      .subscribe(users => this.users = users);
+  }
 
   ngOnInit() {
   }
 
+  login(props: UserModel) {
+    const user = this.users.find(item => item.email === props.email && item.password === props.password);
+    return user ? user : null;
+  }
+
   onSubmit() {
-    const user = this.store.pipe(select(loginUser, this.user));
-    user.subscribe(credentials => {
-      if (!credentials) {
+    if (!this.login(this.userModel)) {
         this.showErrorMessage = true;
         return;
-      }
+    }
 
-      localStorage.setItem('user', JSON.stringify(credentials));
-      this.router.navigate(['/home']);
-    });
+    localStorage.setItem('user', JSON.stringify(this.userModel));
+    this.router.navigate(['/home']);
   }
 
 }

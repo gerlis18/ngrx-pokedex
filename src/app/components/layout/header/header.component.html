@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-red">
   <form class="form-inline">
     <a href="#" routerLink="/home">
       <img src="assets/images/default.png" title="pokedex" class="mr-3" width="60px" height="60px" alt="logo">
@@ -8,12 +8,12 @@
            [(ngModel)]="searchName"
            (keyup)="findPokemon()"
            type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
-    <button class="btn btn-outline-danger my-2 my-sm-0 w-50 d-sm-none d-md-none d-lg-none d-xl-none"
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+    <button class="btn btn-secondary my-2 my-sm-0 w-50 d-sm-none d-md-none d-lg-none d-xl-none"
             (click)="logout()"
             type="button">{{btnName}}</button>
   </form>
-    <button class="btn btn-outline-danger my-2 my-sm-0 d-none d-sm-block" type="button" (click)="logout()">
+    <button class="btn btn-secondary my-2 my-sm-0 d-none d-sm-block" type="button" (click)="logout()">
       {{btnName}}
     </button>
 </nav>

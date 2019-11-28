@@ -38,6 +38,7 @@ export function reducer(state: PokemonModel, action: Action) {
 export const selectPokemon = createSelector(
   (state: AppState) => state.pokemonList,
   (state: PokemonModel, props: any) => {
-    return state.pokemonList.filter(poke => poke.name.includes(props.name));
+    const regExp = new RegExp(`.*${props.name}.*`);
+    return state.pokemonList.filter(poke => regExp.test(poke.name));
   }
 );

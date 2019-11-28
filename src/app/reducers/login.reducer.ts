@@ -19,11 +19,4 @@ export function reducer(state: UserModel | undefined, action: Action) {
   return loginReducer(state, action);
 }
 
-const selectUsers = (state: AppState) => state.registeredUsers;
-
-export const loginUser = createSelector(
-  selectUsers,
-  (users: UserModel[], props: UserModel) => {
-    return users.find(user => user.email === props.email && user.password === props.password);
-  }
-);
+export const selectUsers = (state: AppState) => state.registeredUsers;

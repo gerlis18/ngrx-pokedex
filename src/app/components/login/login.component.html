@@ -4,12 +4,12 @@
       <h2>Welcome to pokedex</h2>
       <div class="form-group">
         <label for="email">Email</label>
-        <input class="form-control" email name="email" [(ngModel)]="user.email"
+        <input class="form-control" email name="email" [(ngModel)]="userModel.email"
                type="text" id="email" placeholder="email">
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input class="form-control" name="password" [(ngModel)]="user.password"
+        <input class="form-control" name="password" [(ngModel)]="userModel.password"
                type="password" id="password" placeholder="password">
         <p *ngIf="showErrorMessage" class="has-error">
           Usuario y/o contraseña incorrectas
