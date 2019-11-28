@@ -1,0 +1,8 @@
+<app-header></app-header>
+<cdk-virtual-scroll-viewport *ngIf="pokeList.length !== 0"
+                             minBufferPx="200" maxBufferPx="400"
+                             itemSize="50" class="mt-2 viewport">
+  <div *cdkVirtualFor="let poke of pokeList" class="poke-item">
+    <app-pokemon [data]="poke | async"></app-pokemon>
+  </div>
+</cdk-virtual-scroll-viewport>

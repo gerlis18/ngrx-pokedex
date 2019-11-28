@@ -1,0 +1,7 @@
+.img-back{
+  background-image: url("~src/assets/images/default.png");
+  object-fit: cover;
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  width: 100%;
+}

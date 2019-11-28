@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.login-container {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewport {
+  height: 90%;
+  width: 100%;
+}
+
+.cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.poke-item {
+  height: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+
+.has-error {
+  color: red;
+}
+
+.poke-card {
+  width: 18rem;
+}
+
+.img-detail {
+  width: 15%;
+}
+
+.default-image {
+  width: auto;
+}
+
+@media only screen and (max-width: 576px) {
+  .poke-card {
+    width: 100%;
+  }
+
+  .img-detail {
+    width: 50%;
+  }
+
+  .viewport {
+    height: 100%;
+    width: 100%;
+  }
+
+  .poke-item {
+    height: auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 10px;
+  }
+
+  .default-image {
+    width: 149px !important;
+  }
+
+}

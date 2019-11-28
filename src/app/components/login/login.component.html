@@ -1,0 +1,24 @@
+<div class="login-container">
+  <div class="pdx-card">
+    <form id="loginForm" (ngSubmit)="onSubmit()" novalidate>
+      <h2>Welcome to pokedex</h2>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" email name="email" [(ngModel)]="user.email"
+               type="text" id="email" placeholder="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" name="password" [(ngModel)]="user.password"
+               type="password" id="password" placeholder="password">
+        <p *ngIf="showErrorMessage" class="has-error">
+          Usuario y/o contraseña incorrectas
+        </p>
+      </div>
+      <div class="d-flex justify-content-between">
+      <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+      <button class="btn btn-secondary" type="button" routerLink="/register">Registrarse</button>
+      </div>
+    </form>
+  </div>
+</div>

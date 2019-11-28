@@ -1,0 +1,14 @@
+<div class="card poke-card">
+  <a href="#" [routerLink]="'/pokemon/' + data?.id">
+    <img [src]="data?.sprites?.front_default || 'assets/images/default.png'"
+         class="card-img-top default-image" alt="imagen">
+  </a>
+  <div class="card-body">
+    <a href="#" [routerLink]="'/pokemon/' + data?.id">
+      <h5 class="card-title">{{data?.name}}</h5>
+    </a>
+    <a href="#" class="badge badge-secondary ml-2" *ngFor="let type of data?.types">
+      {{type?.type?.name}}
+    </a>
+  </div>
+</div>
