@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeService } from '../../services/poke.service';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../reducers';
+import { updatePokemonList } from '../../actions/pokemon.actions';
+import { PokemonList } from '../../models/pokemon.model';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +12,24 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  pokeList: Observable<any>[] = [];
+  pokeList: PokemonList[] = [];
 
-  constructor(private pokeService: PokeService) { }
+  constructor(private pokeService: PokeService, private store: Store<AppState>) {
+  }
 
   ngOnInit() {
     this.pokeService.getPokemons()
       .subscribe((res: any) => {
-          res.results.map(info => {
-            this.pokeList.push(this.pokeService.getPokemonByUrl(info.url));
+        res.map((info: PokemonList) => {
+          this.pokeList.push({
+            name: info.name,
+            url: this.pokeService.getPokemonByUrl(info.url as string)
           });
         });
+        this.store.dispatch(updatePokemonList({
+          selectedPokemon: {},
+          pokemonList: this.pokeList
+        }));
+      });
   }
 }

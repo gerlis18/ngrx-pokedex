@@ -1,10 +1,10 @@
-<app-header></app-header>
+<app-header (search)="onSearchPokemon($event)"></app-header>
 <div class="container-detail">
   <div class="card mt-3" style="width: 98%;" *ngIf="(pokemon$ | async) as pokeResult">
     <div class="text-center">
       <h1 class="card-title">{{pokeResult.name}}</h1>
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="container-img-detail">
       <img class="img-detail" *ngIf="pokeResult.sprites.front_default"
            [src]="pokeResult.sprites.front_default" alt="front_default">
       <img class="img-detail" *ngIf="pokeResult.sprites.front_shiny"
