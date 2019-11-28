@@ -20,7 +20,7 @@ jobs:
         npm run build:prod
 
     - name: deploy web app
-      uses: JamesIves/github-pages-deploy-action@3.0.1
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BASE_BRANCH: master # The branch the action should deploy from.
