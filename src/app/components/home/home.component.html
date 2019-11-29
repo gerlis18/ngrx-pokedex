@@ -1,8 +1,8 @@
 <app-header (search)="onSearchPokemon($event)"></app-header>
-<cdk-virtual-scroll-viewport *ngIf="pokeList.length !== 0"
+<cdk-virtual-scroll-viewport
                              minBufferPx="200" maxBufferPx="400"
-                             itemSize="50" class="mt-2 viewport">
-  <div *cdkVirtualFor="let poke of pokeList" class="poke-item">
-    <app-pokemon [data]="poke.url | async"></app-pokemon>
+                             itemSize="50" class="viewport">
+  <div *cdkVirtualFor="let poke of pokeList; let i = index" class="poke-item">
+    <app-pokemon [index]="i" [data]="poke.url | async"></app-pokemon>
   </div>
 </cdk-virtual-scroll-viewport>

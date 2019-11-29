@@ -1,17 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { updatePokemonList } from '../../actions/pokemon.actions';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../reducers';
 
 @Component({
   selector: 'app-pokemon',
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css']
 })
-export class PokemonComponent implements OnInit {
+export class PokemonComponent {
 
+  @Input() index: number;
   @Input() data: any;
 
-  constructor() { }
+  constructor(private router: Router, private store: Store<AppState>) { }
 
-  ngOnInit() {
+  onSelectPokemon(event: any) {
+    event.preventDefault();
+    this.router.navigate([`/pokemon/${this.data.id}`]);
+    this.store.dispatch(updatePokemonList({ indexScroll: this.index }));
   }
 
 }

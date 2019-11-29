@@ -1,5 +1,5 @@
 <div class="card poke-card">
-  <a href="#" [routerLink]="'/pokemon/' + data?.id">
+  <a href="#" (click)="onSelectPokemon($event)">
     <img [src]="data?.sprites?.front_default || 'assets/images/default.png'"
          class="card-img-top default-image" alt="imagen">
   </a>

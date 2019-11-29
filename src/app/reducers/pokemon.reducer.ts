@@ -6,15 +6,12 @@ import { AppState } from './index';
 const initialState: PokemonModel = {
   selectedPokemon: {},
   pokemonList: [],
-  searchName: ''
+  searchName: '',
+  indexScroll: 0
 };
 
 function updatePokemonList(state: PokemonModel, props: PokemonModel) {
-  return {
-    selectedPokemon: state.selectedPokemon,
-    pokemonList: props.pokemonList,
-    searchName: state.searchName
-  };
+  return { ...state, ...props};
 }
 
 function updatePokemonFilterName(state: PokemonModel, props: PokemonModel) {

@@ -2,9 +2,10 @@ export interface PokemonModel {
   selectedPokemon?: any;
   pokemonList?: PokemonList[];
   searchName?: string;
+  indexScroll?: number;
 }
 
 export interface PokemonList {
-  url: any
+  url: any;
   name: string;
 }
