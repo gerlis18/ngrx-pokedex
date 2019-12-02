@@ -10,7 +10,7 @@
       <h5 class="card-title">{{data?.name || 'Cargando...'}}</h5>
     </a>
     <a href="#" class="badge badge-secondary ml-2 font-weight-normal" *ngIf="!data?.types">Cargando...</a>
-    <a href="#" class="badge badge-secondary ml-2 font-weight-normal"
+    <a href="#" class="badge badge-secondary ml-2 font-weight-normal bg-yellow"
        *ngFor="let type of data?.types">
       {{type?.type?.name}}
     </a>

@@ -64,6 +64,10 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
   background-color: #ef5350;
 }
 
+.bg-yellow {
+  background-color: #EEA94F;
+}
+
 @media only screen and (max-width: 576px) {
   .poke-card {
     width: 100%;
