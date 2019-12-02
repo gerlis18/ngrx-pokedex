@@ -1,37 +1,56 @@
 <app-header (search)="onSearchPokemon($event)"></app-header>
 <div class="container-detail">
   <div class="card mt-3" style="width: 98%;" *ngIf="(pokemon$ | async) as pokeResult">
-    <div class="text-center">
-      <h1 class="card-title">{{pokeResult.name}}</h1>
-    </div>
-    <div class="container-img-detail">
-      <img class="img-detail" *ngIf="pokeResult.sprites.front_default"
-           [src]="pokeResult.sprites.front_default" alt="front_default">
-      <img class="img-detail" *ngIf="pokeResult.sprites.front_shiny"
-           [src]="pokeResult.sprites.front_shiny" alt="front_shiny">
-      <img class="img-detail" *ngIf="pokeResult.sprites.front_shiny_female"
-           [src]="pokeResult.sprites.front_shiny_female" alt="front_shiny_female">
-      <img class="img-detail" *ngIf="pokeResult.sprites.back_default"
-           [src]="pokeResult.sprites.back_default" alt="back_default">
-      <img class="img-detail" *ngIf="pokeResult.sprites.back_shiny"
-           [src]="pokeResult.sprites.back_shiny" alt="back_shiny">
-      <img class="img-detail" *ngIf="pokeResult.sprites.back_shiny_female"
-           [src]="pokeResult.sprites.back_shiny_female" alt="back_shiny_female">
+    <div class="card-header">
+      <div class="text-center">
+        <h1 class="card-title">{{pokeResult.name}}</h1>
+      </div>
+      <div class="container-img-detail">
+        <img class="img-detail" *ngIf="pokeResult.sprites.front_default"
+             [src]="pokeResult.sprites.front_default" alt="front_default">
+        <img class="img-detail" *ngIf="pokeResult.sprites.front_shiny"
+             [src]="pokeResult.sprites.front_shiny" alt="front_shiny">
+        <img class="img-detail" *ngIf="pokeResult.sprites.front_shiny_female"
+             [src]="pokeResult.sprites.front_shiny_female" alt="front_shiny_female">
+        <img class="img-detail" *ngIf="pokeResult.sprites.back_default"
+             [src]="pokeResult.sprites.back_default" alt="back_default">
+        <img class="img-detail" *ngIf="pokeResult.sprites.back_shiny"
+             [src]="pokeResult.sprites.back_shiny" alt="back_shiny">
+        <img class="img-detail" *ngIf="pokeResult.sprites.back_shiny_female"
+             [src]="pokeResult.sprites.back_shiny_female" alt="back_shiny_female">
+      </div>
     </div>
     <div class="card-body">
-      <h5 class="card-title">#ID: {{pokeResult.id}}</h5>
-      <h5>
-        Tipos:
-      </h5>
-      <span class="badge badge-success ml-2" *ngFor="let type of pokeResult.types">
-        {{type.type.name}}
-      </span>
-      <h5>Altura: {{pokeResult.height}}</h5>
-      <h5>Peso: {{pokeResult.weight}}</h5>
+      <div class="d-flex justify-content-center">
+        <ul class="list-group list-group-horizontal">
+          <li class="list-group-item">
+            <h5 class="card-title">#ID: {{pokeResult.id}}</h5>
+          </li>
+          <li class="list-group-item">
+            <h5>
+              Tipos:
+            </h5>
+            <span class="badge badge-success ml-2 font-weight-normal" *ngFor="let type of pokeResult.types">
+            {{type.type.name}}
+          </span>
+          </li>
+          <li class="list-group-item">
+            <h5>Altura: {{pokeResult.height}}</h5>
+          </li>
+          <li class="list-group-item">
+            <h5>Peso: {{pokeResult.weight}}</h5>
+          </li>
+
+        </ul>
+      </div>
       <h5>Lista de movimientos:</h5>
-      <span class="badge badge-info ml-2" *ngFor="let move of pokeResult.moves">
+      <span class="badge badge-info ml-2 font-weight-normal"
+            *ngFor="let move of pokeResult.moves">
           {{move.move.name}}
         </span>
+    </div>
+    <div class="card-footer d-flex justify-content-end" routerLink="/home">
+      <button class="btn btn-secondary">Atrás</button>
     </div>
   </div>
 </div>

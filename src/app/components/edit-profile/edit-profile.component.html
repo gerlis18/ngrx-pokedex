@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="d-flex justify-content-center">
+  <form class="card mt-4" #editForm="ngForm" (ngSubmit)="save()">
+    <div class="card-header">
+      <h2>Editar Perfil</h2>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="username">Username:</label>
+      <input id="username" name="username"
+             [(ngModel)]="user.username"
+             required
+             type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="user.email"
+             name="email"
+             required
+             email
+             type="text" class="form-control">
+      </div>
+      <button class="btn btn-primary"
+              [disabled]="editForm.invalid">Guardar</button>
+    </div>
+  </form>
+
+</div>

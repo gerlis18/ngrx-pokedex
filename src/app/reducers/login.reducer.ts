@@ -1,5 +1,5 @@
 import { UserModel } from '../models/user.model';
-import { Action, createReducer, createSelector, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as loginActions from '../actions/login.actions';
 import { AppState } from './index';
 

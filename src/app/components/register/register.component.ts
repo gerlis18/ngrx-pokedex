@@ -4,6 +4,7 @@ import { AppState } from '../../reducers';
 import { UserModel } from '../../models/user.model';
 import { register } from '../../actions/register.actions';
 import { Router } from '@angular/router';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,10 @@ export class RegisterComponent implements OnInit {
   };
   confirmPassword: string;
 
-  constructor(private store: Store<AppState>, private router: Router) {
+  constructor(
+    private store: Store<AppState>,
+    private localService: LocalstorageService,
+    private router: Router) {
 
   }
 
@@ -28,6 +32,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.store.dispatch(register({ credentials: this.model }));
+    this.localService.setUser(this.model);
     this.router.navigate(['/login']);
   }
 

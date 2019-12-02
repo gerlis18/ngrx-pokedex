@@ -20,6 +20,7 @@ import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { PasswordValidator } from './components/password-validator.directive';
 import { AuthGuard } from './components/auth.guard';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthGuard } from './components/auth.guard';
     HeaderComponent,
     PokemonComponent,
     PokemonDetailComponent,
-    PasswordValidator
+    PasswordValidator,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

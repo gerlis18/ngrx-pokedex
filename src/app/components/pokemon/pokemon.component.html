@@ -1,13 +1,17 @@
-<div class="card poke-card">
-  <a href="#" (click)="onSelectPokemon($event)">
-    <img [src]="data?.sprites?.front_default || 'assets/images/default.png'"
-         class="card-img-top default-image" alt="imagen">
-  </a>
-  <div class="card-body">
-    <a href="#" [routerLink]="'/pokemon/' + data?.id">
-      <h5 class="card-title">{{data?.name}}</h5>
+<div class="card poke-card animated zoomIn">
+  <div class="card-header">
+    <a href="#" (click)="onSelectPokemon($event)">
+      <img [src]="data?.sprites?.front_default || 'assets/images/default.png'"
+           class="card-img-top default-image" alt="imagen">
     </a>
-    <a href="#" class="badge badge-secondary ml-2" *ngFor="let type of data?.types">
+  </div>
+  <div class="card-body">
+    <a href="#" (click)="onSelectPokemon($event)">
+      <h5 class="card-title">{{data?.name || 'Cargando...'}}</h5>
+    </a>
+    <a href="#" class="badge badge-secondary ml-2 font-weight-normal" *ngIf="!data?.types">Cargando...</a>
+    <a href="#" class="badge badge-secondary ml-2 font-weight-normal"
+       *ngFor="let type of data?.types">
       {{type?.type?.name}}
     </a>
   </div>

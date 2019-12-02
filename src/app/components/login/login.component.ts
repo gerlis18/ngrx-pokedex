@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AppState } from '../../reducers';
 import { UserModel } from '../../models/user.model';
-import { selectUsers } from '../../reducers/login.reducer';
 import { Router } from '@angular/router';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,28 +17,31 @@ export class LoginComponent implements OnInit {
     email: ''
   };
   showErrorMessage: boolean;
-  users: UserModel[];
 
-  constructor(private store: Store<AppState>, private router: Router) {
-    this.store.pipe(select(selectUsers))
-      .subscribe(users => this.users = users);
-  }
+  constructor(
+    private store: Store<AppState>,
+    private router: Router,
+    private localService: LocalstorageService) { }
 
   ngOnInit() {
+    if (this.localService.getUser()) {
+      this.router.navigate(['/home']);
+    }
   }
 
-  login(props: UserModel) {
-    const user = this.users.find(item => item.email === props.email && item.password === props.password);
-    return user ? user : null;
+  login() {
+    const savedUser = this.localService.getUser();
+    return savedUser.email === this.userModel.email
+      && savedUser.password === this.userModel.password;
   }
+
 
   onSubmit() {
-    if (!this.login(this.userModel)) {
+    if (!this.login()) {
         this.showErrorMessage = true;
         return;
     }
 
-    localStorage.setItem('user', JSON.stringify(this.userModel));
     this.router.navigate(['/home']);
   }
 

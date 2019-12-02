@@ -19,7 +19,7 @@ export class PokemonComponent {
   onSelectPokemon(event: any) {
     event.preventDefault();
     this.router.navigate([`/pokemon/${this.data.id}`]);
-    this.store.dispatch(updatePokemonList({ indexScroll: this.index }));
+    this.store.dispatch(updatePokemonList({ indexScroll: (this.index - 2) }));
   }
 
 }
